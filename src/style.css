@@ -5,7 +5,7 @@
 .display{
   display: block;
   margin: 0 auto;
-  border: 3px solid #333;
+  border: 1.5px solid #333;
   height: 200px;
   width: 790px;
   overflow: auto;
@@ -111,4 +111,14 @@
 .keys:hover{
   background-color: #be8282;
   transition: 0.5s;
+}
+.keys:active{
+  background-color: #660b5a83;
+  border-radius: 50%;
+  color: #ffffff;
+}
+.yes{
+  border-radius: 10px;
+  background-color: #e7c0c0;
+  color: #333;
 }

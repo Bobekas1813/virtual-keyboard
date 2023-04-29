@@ -8,20 +8,22 @@ keyboard.classList.add('keyboard')
 
 
 //   add keybord
+
+//     list  keys
 let keySymbols = [
-  '<div class="keys spec">`</div>',
-  '<div class="keys">1</div>',
-  '<div class="keys">2</div>',
-  '<div class="keys">3</div>',
-  '<div class="keys">4</div>',
-  '<div class="keys">5</div>',
-  '<div class="keys">6</div>',
-  '<div class="keys">7</div>',
-  '<div class="keys">8</div>',
-  '<div class="keys">9</div>',
-  '<div class="keys">0</div>',
-  '<div class="keys">-</div>',
-  '<div class="keys">=</div>',
+  '<div num="`" class="keys spec">`</div>',
+  '<div num="1" class="keys">1</div>',
+  '<div num="2" class="keys">2</div>',
+  '<div num="3" class="keys">3</div>',
+  '<div num="4" class="keys">4</div>',
+  '<div num="5" class="keys">5</div>',
+  '<div num="6" class="keys">6</div>',
+  '<div num="7" class="keys">7</div>',
+  '<div num="8" class="keys">8</div>',
+  '<div num="9" class="keys">9</div>',
+  '<div num="0" class="keys">0</div>',
+  '<div num="-" class="keys">-</div>',
+  '<div num="=" class="keys">=</div>',
   '<div class="keys backspace spec">Backspace</div>',
   '<div class="keys tab spec">Tab</div>',
   '<div data="q" datacaps="Q" class="keys">q</div>',
@@ -34,9 +36,9 @@ let keySymbols = [
   '<div data="i" datacaps="I" class="keys">i</div>',
   '<div data="o" datacaps="O" class="keys">o</div>',
   '<div data="p" datacaps="P" class="keys">p</div>',
-  '<div class="keys">[</div>',
-  '<div class="keys">]</div>',
-  '<div class="keys">\\</div>',
+  '<div symb="[" class="keys">[</div>',
+  '<div symb="]" class="keys">]</div>',
+  '<div symb="\\" class="keys">\\</div>',
   '<div class="keys spec">DEL</div>',
   '<div class="keys big-keys caps  spec">Caps Lock</div>',
   '<div data="a" datacaps="A" class="keys">a</div>',
@@ -48,10 +50,10 @@ let keySymbols = [
   '<div data="j" datacaps="J" class="keys">j</div>',
   '<div data="k" datacaps="K" class="keys">k</div>',
   '<div data="l" datacaps="L" class="keys">l</div>',
-  '<div class="keys">;</div>',
-  '<div class="keys">\'</div>',
+  '<div symb=";" class="keys">;</div>',
+  '<div symb="\'" class="keys">\'</div>',
   '<div class="keys enter spec">ENTER</div>',
-  '<div class="keys big-keys spec">Shift</div>',
+  '<div class="keys shift big-keys spec">Shift</div>',
   '<div data="z" datacaps="Z" class="keys">z</div>',
   '<div data="x" datacaps="X" class="keys">x</div>',
   '<div data="c" datacaps="C" class="keys">c</div>',
@@ -59,9 +61,9 @@ let keySymbols = [
   '<div data="b" datacaps="B" class="keys">b</div>',
   '<div data="n" datacaps="N" class="keys">n</div>',
   '<div data="m" datacaps="M" class="keys">m</div>',
-  '<div class="keys">,</div>',
-  '<div class="keys">.</div>',
-  '<div class="keys">/</div>',
+  '<div symb="," class="keys">,</div>',
+  '<div symb="." class="keys">.</div>',
+  '<div symb="/" class="keys">/</div>',
   '<div class="keys spec">⇑</div>',
   '<div class="keys big-keys right spec">Shift</div>',
   '<div class="keys ctrl left spec">Ctrl</div>',
@@ -74,7 +76,7 @@ let keySymbols = [
   '<div class="keys spec">⇒</div>',
   '<div class="keys ctrl spec">Ctrl</div>',
 ];
-
+//-------------
 let a = '';
 for(let i = 0; i < keySymbols.length; i++){
   a += keySymbols[i];
@@ -83,18 +85,86 @@ keyboard.innerHTML = a;
 document.body.append(keyboard);
 // --------------
 
-// event mouse
+//----------------------- event mouse
+  //caps
 let caps = document.querySelector('.caps');
 caps.addEventListener('click', function(){
   caps.classList.toggle('yes');
+
+
+  let arr = document.querySelectorAll('.keys');
+   if(caps.classList.contains('yes')){
+    for(let i = 0; i < arr.length; i++){
+      console.log(arr[i].innerHTML)
+      if(arr[i].hasAttribute('data')){
+        
+        arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
+      }
+      
+    }
+  }else{
+    for(let i = 0; i < arr.length; i++){
+      console.log(arr[i].innerHTML)
+      if(arr[i].hasAttribute('data')){
+        
+        arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
+      }
+      
+    }
+  }
 })
 
+//keys
 let keysArr = document.querySelector('.keyboard');
 
 
-keysArr.addEventListener('click', function(e) {
+// shift
+
+keysArr.addEventListener('mousedown', function(e) {
+  if(e.target.classList.contains('shift')){
+    let arr = document.querySelectorAll('.keys');
+    for(let i = 0; i < arr.length; i++){
+      console.log(arr[i].innerHTML)
+      if(arr[i].hasAttribute('data')){
+        arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
+      }
+    }
+    keysArr.addEventListener('mouseup', function(e) {
+      let arr = document.querySelectorAll('.keys');
+      for(let i = 0; i < arr.length; i++){
+        console.log(arr[i].innerHTML)
+        if(arr[i].hasAttribute('data')){
+          arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
+        }
+      }
+    })
+  }
+
 
 })
+
+//enter characters on display
+keysArr.addEventListener('click', function(e) {
+  let ee = e.target;
+  if(ee.hasAttribute('data')){
+  if(caps.classList.contains('yes')){
+  display.innerHTML += ee.getAttribute('datacaps');
+  }else{
+    display.innerHTML += ee.getAttribute('data');
+  }
+  }else if(ee.hasAttribute('num')){
+    display.innerHTML += ee.getAttribute('num');
+  }else if(ee.classList.contains('backspace')){
+    let str = display.innerHTML;
+    let newStr = str.slice(0, str.length - 1);
+    display.innerHTML = newStr;
+  }else if(ee.hasAttribute('symb')){
+    display.innerHTML += ee.getAttribute('symb');
+  }
+})
+
+
+
 // event keydown
 document.addEventListener("keydown",function(e){
 
