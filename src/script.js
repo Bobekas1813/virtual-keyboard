@@ -1,5 +1,5 @@
 'use strict'
-const keyboardArr = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8, 9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 46, 20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13, 16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16, 17, 91, 18, 32, 18, 17, 37, 40, 39];
+// const keyboardArr = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8, 9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 46, 20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13, 16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16, 17, 91, 18, 32, 18, 17, 37, 40, 39];
 let display = document.createElement('textarea');
 display.classList.add('display');
 document.body.append(display);
@@ -139,19 +139,19 @@ let engKeyboard = [
   '<div class="keys ctrl spec">Ctrl</div>',
 ]
 let keySymbols = [
-  '<div num="`" class="keys spec ru">`</div>',
-  '<div num="1" class="keys ru">1</div>',
-  '<div num="2" class="keys ru">2</div>',
-  '<div num="3" class="keys ru">3</div>',
-  '<div num="4" class="keys ru">4</div>',
-  '<div num="5" class="keys ru">5</div>',
-  '<div num="6" class="keys ru">6</div>',
-  '<div num="7" class="keys ru">7</div>',
-  '<div num="8" class="keys ru">8</div>',
-  '<div num="9" class="keys ru">9</div>',
-  '<div num="0" class="keys ru">0</div>',
-  '<div num="-" class="keys ru">-</div>',
-  '<div num="=" class="keys ru">=</div>',
+  '<div numsy="~"  num="`" class="keys spec ru">`</div>',
+  '<div numsy="!" num="1" class="keys ru">1</div>',
+  '<div numsy="#" num="2" class="keys ru">2</div>',
+  '<div numsy="#" num="3" class="keys ru">3</div>',
+  '<div numsy="$" num="4" class="keys ru">4</div>',
+  '<div numsy="%" num="5" class="keys ru">5</div>',
+  '<div numsy="^" num="6" class="keys ru">6</div>',
+  '<div numsy="&" num="7" class="keys ru">7</div>',
+  '<div numsy="*" num="8" class="keys ru">8</div>',
+  '<div numsy="(" num="9" class="keys ru">9</div>',
+  '<div numsy=")" num="0" class="keys ru">0</div>',
+  '<div numsy="_" num="-" class="keys ru">-</div>',
+  '<div numsy="+" num="=" class="keys ru">=</div>',
   '<div class="keys backspace spec ru">Backspace</div>',
   '<div class="keys tab spec ru">Tab</div>',
   '<div data="й" datacaps="Й" class="keys ru">й</div>',
@@ -189,7 +189,7 @@ let keySymbols = [
   '<div data="и" datacaps="И" class="keys ru">и</div>',
   '<div data="т" datacaps="Т" class="keys ru">т</div>',
   '<div data="ь" datacaps="Ь" class="keys ru">ь</div>',
-  '<div data="Б" datacaps="Б" class="keys ru">б</div>',
+  '<div data="б" datacaps="Б" class="keys ru">б</div>',
   '<div data="ю" datacaps="Ю" class="keys ru">ю</div>',
   '<div symb="/" class="keys ru">.</div>',
   '<div class="keys spec ru">⇑</div>',
@@ -352,39 +352,297 @@ document.body.append(keyboard);
 // --------------
 // language
 let exArr = document.querySelector('.keyboard').children
-console.log(exArr)
+let langStore = localStorage.getItem('lang')
+console.log(langStore)
+if(langStore == 'engl'){
+
 for(let i = 0; i < exArr.length; i++){
- 
+  localStorage.setItem('lang','engl');
   if(exArr[i].classList.contains('ru')){
-    console.log(exArr[i])
-    exArr[i].classList.add('hidden')
+    exArr[i].classList.add('hidden');
   }
-  
 }
+
+
+}else{
+  for(let i = 0; i < exArr.length; i++){
+    localStorage.setItem('lang','rus');
+    
+    if(exArr[i].classList.contains('eng')){
+      
+      exArr[i].classList.add('hidden');
+      
+    }
+  }
+}
+
+langStore = localStorage.getItem('lang');
+
+
+
 
 document.addEventListener('keydown', function(e) {
  
   if(e.ctrlKey && e.shiftKey) {  
+
     for(let i = 0; i < exArr.length; i++){
       
     exArr[i].classList.toggle('hidden')
     }
+     
+    if(langStore == 'engl'){
+      localStorage.removeItem('lang')
+     localStorage.setItem('lang', 'rus');
+     langStore = localStorage.getItem('lang');
+     
+    }else{
+      localStorage.removeItem('lang')
+      localStorage.setItem('lang', 'engl');
+      langStore = localStorage.getItem('lang');
 
+    }
     
   }
  })
+
+let englKeys = {
+'Backquote': '`',
+
+'KeyQ': 'q',
+
+'KeyW': 'w',
+'KeyE': 'e',
+
+'KeyR': 'r',
+
+'KeyT': 't',
+
+'KeyY': 'y',
+
+'KeyU': 'u',
+
+
+'KeyI': 'i',
+
+
+'KeyO': 'o',
+'KeyP': 'p',
+'BracketLeft': '[',
+
+'BracketRight': ']',
+
+'KeyA': 'a',
+
+
+'KeyS': 's',
+
+
+'KeyD': 'd',
+
+KeyF: 'f',
+
+
+'KeyG': 'g',
+
+
+'KeyH': 'h',
+
+
+'KeyJ': 'j',
+
+
+'KeyK': 'k',
+
+
+'KeyL': 'l',
+
+
+'Semicolon': ';',
+
+'Quote': "'",
+
+
+'KeyZ': 'z',
+
+
+'KeyX': 'x',
+
+
+'KeyC': 'c',
+
+
+'KeyV': 'v',
+
+'KeyB': 'b',
+
+
+'KeyN': 'n',
+
+'KeyM': 'm',
+
+'Comma': ',',
+'Period': '.',
+'Slash': '/'
+}
+let rusKeys = {
+'Backquote': 'ё',
+
+'KeyQ': 'й',
+
+'KeyW': 'ц',
+'KeyE': 'у',
+
+'KeyR': 'к',
+
+'KeyT': 'е',
+
+'KeyY': 'н',
+
+'KeyU': 'г',
+
+
+'KeyI': 'ш',
+
+
+'KeyO': 'щ',
+'KeyP': 'з',
+'BracketLeft': 'х',
+
+'BracketRight': 'ъ',
+
+'KeyA': 'ф',
+
+
+'KeyS': 'ы',
+
+
+'KeyD': 'в',
+
+KeyF: 'а',
+
+
+'KeyG': 'п',
+
+
+'KeyH': 'р',
+
+
+'KeyJ': 'о',
+
+
+'KeyK': 'л',
+
+
+'KeyL': 'д',
+
+
+'Semicolon': 'ж',
+
+'Quote': "э",
+
+
+'KeyZ': 'я',
+
+
+'KeyX': 'ч',
+
+
+'KeyC': 'с',
+
+
+'KeyV': 'м',
+
+'KeyB': 'и',
+
+
+'KeyN': 'т',
+
+'KeyM': 'ь',
+
+'Comma': 'б',
+'Period': 'ю',
+'Slash': '.'
+}
+
+
+
+ document.addEventListener('keydown', function(e) {
+  if(e.shiftKey && e.target.hasAttribute('num')){console.log(147)}
+  if(e.code == "Backspace") {
+    let str = display.innerHTML;
+    let newStr = str.slice(0, str.length - 1);
+    display.innerHTML = newStr;
+
+  }else if(e.code != 'Tab' && e.code != 'Enter' && e.code != 'CapsLock' && 
+  e.code != 'ShiftLeft'
+   && e.code != 'ControlLeft'  && e.code != 'MetaLeft' 
+    && e.code != 'AltLeft'  && e.code != 'AltRight'
+    && e.code != 'ControlRight' && e.code != 'ArrowUp'
+    && e.code != 'ArrowLeft' && e.code != 'ArrowDown'
+    && e.code != 'ArrowRight' && e.code != 'ShiftRight'){
+      let push = e.code;
+      // console.log(e.key);
+      // console.log(e.code);
+      if(langStore == 'engl'){
+      if(englKeys[push] != undefined){
+       console.log(langStore)
+       let y = '';
+       y += englKeys[push];
+       display.innerHTML += y;
+// подсветка клавиш на экране при нажатии на клаве
+       let arrKeys = document.querySelectorAll('.keys');
+       for(let i = 0; i < arrKeys.length; i++){
+        if(arrKeys[i].getAttribute('data') == englKeys[push]){
+          arrKeys[i].classList.add('light');
+          setTimeout(function(){
+            for(let i = 0; i < arrKeys.length; i++){
+              arrKeys[i].classList.remove('light')
+            }
+          },0)
+        }
+       }
+      }
+
+     }else{
+       
+       if(rusKeys[push] != undefined){
+         let y ='';
+         y += rusKeys[push];
+         display.innerHTML += y;
+         // подсветка клавиш на экране при нажатии на клаве
+         let arrKeys = document.querySelectorAll('.keys');
+         for(let i = 0; i < arrKeys.length; i++){
+          if(arrKeys[i].getAttribute('data') == rusKeys[push]){
+            arrKeys[i].classList.add('light');
+            setTimeout(function(){
+              for(let i = 0; i < arrKeys.length; i++){
+                arrKeys[i].classList.remove('light')
+              }
+            },0)
+          }
+         }
+        
+        }
+     }
+  }
+
+
+   
+
+})
 //----------------------- event mouse
   //caps
-let caps = document.querySelector('.caps');
+  let caps = document.querySelector('.caps');
+  let capsE = document.querySelector('.capse'); 
+
 caps.addEventListener('click', function(){
+  
   caps.classList.toggle('yes');
-
-
+  capsE.classList.toggle('yes');
   let arr = document.querySelectorAll('.keys');
    if(caps.classList.contains('yes')){
     for(let i = 0; i < arr.length; i++){
       if(arr[i].hasAttribute('data')){
-        
         arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
       }
       
@@ -392,17 +650,16 @@ caps.addEventListener('click', function(){
   }else{
     for(let i = 0; i < arr.length; i++){
       if(arr[i].hasAttribute('data')){
-        
         arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
       }
-      
     }
   }
 })
-let capsE = document.querySelector('.capse');
-capsE.addEventListener('click', function(){
-  capsE.classList.toggle('yes');
 
+capsE.addEventListener('click', function(){
+
+  capsE.classList.toggle('yes');
+  caps.classList.toggle('yes');
 
   let arr = document.querySelectorAll('.keys');
    if(capsE.classList.contains('yes')){
@@ -430,7 +687,28 @@ let keysArr = document.querySelector('.keyboard');
 
 // shift
 
+// keysArr.addEventListener('mousedown', function(e) {
+//   if(e.target.classList.contains('shift')){
+//     let arr = document.querySelectorAll('.keys');
+//     for(let i = 0; i < arr.length; i++){
+//       if(arr[i].hasAttribute('data')){
+//         arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
+//       }
+//     }
+//     keysArr.addEventListener('mouseup', function(e) {
+//       let arr = document.querySelectorAll('.keys');
+//       for(let i = 0; i < arr.length; i++){
+//         if(arr[i].hasAttribute('data')){
+//           arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
+//         }
+//       }
+//     })
+//   }
+// })
+
+//enter characters on display
 keysArr.addEventListener('mousedown', function(e) {
+// ---
   if(e.target.classList.contains('shift')){
     let arr = document.querySelectorAll('.keys');
     for(let i = 0; i < arr.length; i++){
@@ -448,11 +726,7 @@ keysArr.addEventListener('mousedown', function(e) {
     })
   }
 
-
-})
-
-//enter characters on display
-keysArr.addEventListener('click', function(e) {
+// --
   let ee = e.target;
   if(ee.hasAttribute('data')){
   if(caps.classList.contains('yes')){
@@ -468,29 +742,55 @@ keysArr.addEventListener('click', function(e) {
     display.innerHTML = newStr;
   }else if(ee.hasAttribute('symb')){
     display.innerHTML += ee.getAttribute('symb');
+  }else if(ee.classList.contains('enter')){
+    display.innerHTML += '\n';
   }
 })
 
 
 
 // event keydown
-document.addEventListener("keydown",function(e){
+// document.addEventListener("keydown",function(e){
+//   //  console.log(e.code)
+//   if(e.code == "Backspace") {
+//     let str = display.innerHTML;
+//     let newStr = str.slice(0, str.length - 1);
+//     display.innerHTML = newStr;
 
-  if(e.code == "Backspace") {
-    let str = display.innerHTML;
-    let newStr = str.slice(0, str.length - 1);
-    display.innerHTML = newStr;
-
-  }else if(e.code != 'Tab' && e.code != 'Enter' && e.code != 'CapsLock' && 
-  e.code != 'ShiftLeft'
-   && e.code != 'ControlLeft'  && e.code != 'MetaLeft' 
-    && e.code != 'AltLeft'  && e.code != 'AltRight'
-    && e.code != 'ControlRight' && e.code != 'ArrowUp'
-    && e.code != 'ArrowLeft' && e.code != 'ArrowDown'
-    && e.code != 'ArrowRight' && e.code != 'ShiftRight'){
-  display.innerHTML += `${e.key}`}
-})
+//   }else if(e.code != 'Tab' && e.code != 'Enter' && e.code != 'CapsLock' && 
+//   e.code != 'ShiftLeft'
+//    && e.code != 'ControlLeft'  && e.code != 'MetaLeft' 
+//     && e.code != 'AltLeft'  && e.code != 'AltRight'
+//     && e.code != 'ControlRight' && e.code != 'ArrowUp'
+//     && e.code != 'ArrowLeft' && e.code != 'ArrowDown'
+//     && e.code != 'ArrowRight' && e.code != 'ShiftRight'){
+//    display.innerHTML += `${e.key}`
+//   }
+// })
 
 //--------------
+document.onkeydown = function(e) {
+  //  e.preventDefault();
+  if(e.key == 'Alt' || e.key == 'AltGraph'){
+    console.log(5555);
+    e.preventDefault();
+  }else if(e.key == 'Tab'){
+    e.preventDefault();
+    display.innerHTML += '    ';
+  }else if(e.key == 'Enter'){
+    e.preventDefault();
+    display.innerHTML += '\n';
+  }
+}
 
+
+//----cursor
+
+function foo() {
+  var selObj = window.getSelection();
+  console.log(selObj)
+  var selRange = selObj.getRangeAt(0);
+  // вернёт диапазон Range
+  console.log(selRange);
+}
 

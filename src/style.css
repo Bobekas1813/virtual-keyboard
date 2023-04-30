@@ -126,3 +126,6 @@
 .hidden{
   display: none;
 }
+.light{
+  background-color: red;
+}
