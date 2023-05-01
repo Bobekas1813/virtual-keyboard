@@ -9,6 +9,7 @@
   height: 200px;
   width: 790px;
   overflow: auto;
+  pointer-events: none;
 }
 .keyboard{
   padding: 5px;
@@ -20,7 +21,10 @@
   background: #ece1e1;
 
 }
-
+.text{
+  margin-left: 200px;
+  font-size: 20px;
+}
 .keys{
  display: flex;
  justify-content: center;

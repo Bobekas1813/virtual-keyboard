@@ -1,146 +1,15 @@
 'use strict'
-// const keyboardArr = [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8, 9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 46, 20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13, 16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16, 17, 91, 18, 32, 18, 17, 37, 40, 39];
+
 let display = document.createElement('textarea');
 display.classList.add('display');
 document.body.append(display);
 let keyboard = document.createElement('div');
 keyboard.classList.add('keyboard')
 
-// let rusKeyboard = [
-//   '<div num="`" class="keys spec ru">`</div>',
-//   '<div num="1" class="keys">1</div>',
-//   '<div num="2" class="keys ru">2</div>',
-//   '<div num="3" class="keys ru">3</div>',
-//   '<div num="4" class="keys ru">4</div>',
-//   '<div num="5" class="keys ru">5</div>',
-//   '<div num="6" class="keys ru">6</div>',
-//   '<div num="7" class="keys ru">7</div>',
-//   '<div num="8" class="keys ru">8</div>',
-//   '<div num="9" class="keys ru">9</div>',
-//   '<div num="0" class="keys ru">0</div>',
-//   '<div num="-" class="keys ru">-</div>',
-//   '<div num="=" class="keys ru">=</div>',
-//   '<div class="keys backspace spec ru">Backspace</div>',
-//   '<div class="keys tab spec ru">Tab</div>',
-//   '<div data="й" datacaps="Й" class="keys ru">й</div>',
-//   '<div data="ц" datacaps="Ц" class="keys ru">ц</div>',
-//   '<div data="у" datacaps="У" class="keys ru">у</div>',
-//   '<div data="к" datacaps="К" class="keys ru">к</div>',
-//   '<div data="е" datacaps="Е" class="keys ru">е</div>',
-//   '<div data="н" datacaps="Н" class="keys ru">н</div>',
-//   '<div data="г" datacaps="Г" class="keys ru">г</div>',
-//   '<div data="ш" datacaps="Ш" class="keys ru">ш</div>',
-//   '<div data="щ" datacaps="Щ" class="keys ru">щ</div>',
-//   '<div data="з" datacaps="З" class="keys ru">з</div>',
-//   '<div data="х" datacaps="Х" class="keys ru">х</div>',
-//   '<div data="ъ" datacaps="Ъ" class="keys ru">ъ</div>',
-//   '<div symb="\\" class="keys ru">\\</div>',
-//   '<div class="keys spec ru">DEL</div>',
-//   '<div class="keys big-keys caps ru spec">Caps Lock</div>',
-//   '<div data="ф" datacaps="Ф" class="keys ru">ф</div>',
-//   '<div data="ы" datacaps="Ы" class="keys ru">ы</div>',
-//   '<div data="в" datacaps="В" class="keys ru">в</div>',
-//   '<div data="а" datacaps="А" class="keys ru">а</div>',
-//   '<div data="п" datacaps="П" class="keys ru">п</div>',
-//   '<div data="р" datacaps="Р" class="keys ru">р</div>',
-//   '<div data="о" datacaps="О" class="keys ru">о</div>',
-//   '<div data="л" datacaps="Л" class="keys ru">л</div>',
-//   '<div data="д" datacaps="Д" class="keys ru">д</div>',
-//   '<div data="ж" datacaps="Ж" class="keys ru">ж</div>',
-//   '<div data="э" datacaps="Э" class="keys ru">э</div>',
-//   '<div class="keys enter spec ru">ENTER</div>',
-//   '<div class="keys shift big-keys spec ru">Shift</div>',
-//   '<div data="я" datacaps="Z" class="keys ru">я</div>',
-//   '<div data="ч" datacaps="Ч" class="keys ru">ч</div>',
-//   '<div data="с" datacaps="С" class="keys ru">с</div>',
-//   '<div data="м" datacaps="М" class="keys ru">м</div>',
-//   '<div data="и" datacaps="И" class="keys ru">и</div>',
-//   '<div data="т" datacaps="Т" class="keys ru">т</div>',
-//   '<div data="ь" datacaps="Ь" class="keys ru">ь</div>',
-//   '<div data="Б" datacaps="Б" class="keys ru">б</div>',
-//   '<div data="ю" datacaps="Ю" class="keys ru">ю</div>',
-//   '<div symb="/" class="keys ru">.</div>',
-//   '<div class="keys spec ru">⇑</div>',
-//   '<div class="keys shift big-keys right spec ru">Shift</div>',
-//   '<div class="keys ctrl left spec ru">Ctrl</div>',
-//   '<div class="keys spec ru">Win</div>',
-//   '<div class="keys spec ru">Alt</div>',
-//   '<div class="keys space ru"></div>',
-//   '<div class="keys spec ru">Alt</div>',
-//   '<div class="keys spec ru">⇐</div>',
-//   '<div class="keys spec ru">⇓</div>',
-//   '<div class="keys spec ru">⇒</div>',
-//   '<div class="keys ctrl spec ru">Ctrl</div>',
-// ]
-// let engKeyboard = [
-//   '<div num="`" class="keys spec">`</div>',
-//   '<div num="1" class="keys">1</div>',
-//   '<div num="2" class="keys">2</div>',
-//   '<div num="3" class="keys">3</div>',
-//   '<div num="4" class="keys">4</div>',
-//   '<div num="5" class="keys">5</div>',
-//   '<div num="6" class="keys">6</div>',
-//   '<div num="7" class="keys">7</div>',
-//   '<div num="8" class="keys">8</div>',
-//   '<div num="9" class="keys">9</div>',
-//   '<div num="0" class="keys">0</div>',
-//   '<div num="-" class="keys">-</div>',
-//   '<div num="=" class="keys">=</div>',
-//   '<div class="keys backspace spec">Backspace</div>',
-//   '<div class="keys tab spec">Tab</div>',
-//   '<div data="q" datacaps="Q" class="keys">q</div>',
-//   '<div data="w" datacaps="W" class="keys">w</div>',
-//   '<div data="e" datacaps="E" class="keys">e</div>',
-//   '<div data="r" datacaps="R" class="keys">r</div>',
-//   '<div data="t" datacaps="T" class="keys">t</div>',
-//   '<div data="y" datacaps="Y" class="keys">y</div>',
-//   '<div data="u" datacaps="U" class="keys">u</div>',
-//   '<div data="i" datacaps="I" class="keys">i</div>',
-//   '<div data="o" datacaps="O" class="keys">o</div>',
-//   '<div data="p" datacaps="P" class="keys">p</div>',
-//   '<div symb="[" class="keys">[</div>',
-//   '<div symb="]" class="keys">]</div>',
-//   '<div symb="\\" class="keys">\\</div>',
-//   '<div class="keys spec">DEL</div>',
-//   '<div class="keys big-keys caps  spec">Caps Lock</div>',
-//   '<div data="a" datacaps="A" class="keys">a</div>',
-//   '<div data="s" datacaps="S" class="keys">s</div>',
-//   '<div data="d" datacaps="D" class="keys">d</div>',
-//   '<div data="f" datacaps="F" class="keys">f</div>',
-//   '<div data="g" datacaps="G" class="keys">g</div>',
-//   '<div data="h" datacaps="H" class="keys">h</div>',
-//   '<div data="j" datacaps="J" class="keys">j</div>',
-//   '<div data="k" datacaps="K" class="keys">k</div>',
-//   '<div data="l" datacaps="L" class="keys">l</div>',
-//   '<div symb=";" class="keys">;</div>',
-//   '<div symb="\'" class="keys">\'</div>',
-//   '<div class="keys enter spec">ENTER</div>',
-//   '<div class="keys shift big-keys spec">Shift</div>',
-//   '<div data="z" datacaps="Z" class="keys">z</div>',
-//   '<div data="x" datacaps="X" class="keys">x</div>',
-//   '<div data="c" datacaps="C" class="keys">c</div>',
-//   '<div data="v" datacaps="V" class="keys">v</div>',
-//   '<div data="b" datacaps="B" class="keys">b</div>',
-//   '<div data="n" datacaps="N" class="keys">n</div>',
-//   '<div data="m" datacaps="M" class="keys">m</div>',
-//   '<div symb="," class="keys">,</div>',
-//   '<div symb="." class="keys">.</div>',
-//   '<div symb="/" class="keys">/</div>',
-//   '<div class="keys spec">⇑</div>',
-//   '<div class="keys shift big-keys right spec">Shift</div>',
-//   '<div class="keys ctrl left spec">Ctrl</div>',
-//   '<div class="keys spec">Win</div>',
-//   '<div class="keys spec">Alt</div>',
-//   '<div class="keys space"></div>',
-//   '<div class="keys spec">Alt</div>',
-//   '<div class="keys spec">⇐</div>',
-//   '<div class="keys spec">⇓</div>',
-//   '<div class="keys spec">⇒</div>',
-//   '<div class="keys ctrl spec">Ctrl</div>',
-// ]
+
 
 let keySymbols = [
-  '<div numsy="~"  num="`" class="keys ru">`</div>',
+  '<div numsy="~"  num="`" class="keys num ru">`</div>',
   '<div numsy="!" num="1" class="keys num ru">1</div>',
   '<div numsy="#" num="2" class="keys num ru">2</div>',
   '<div numsy="#" num="3" class="keys  num ru">3</div>',
@@ -193,17 +62,17 @@ let keySymbols = [
   '<div data="б" datacaps="Б" class="keys ru">б</div>',
   '<div data="ю" datacaps="Ю" class="keys ru">ю</div>',
   '<div symb="/" class="keys ru">.</div>',
-  '<div class="keys spec artr ru">⇑</div>',
+  '<div arrow="⇑" class="keys spec artr ar ru">⇑</div>',
   '<div class="keys shift big-keys right spec ru">Shift</div>',
   '<div class="keys ctrl left spec ru">Ctrl</div>',
-  '<div class="keys spec ru">Win</div>',
-  '<div class="keys spec ru">Alt</div>',
+  '<div class="keys win spec ru">Win</div>',
+  '<div class="keys altl spec ru">Alt</div>',
   '<div class="keys space ru"></div>',
-  '<div class="keys spec  ru">Alt</div>',
-  '<div class="keys spec arlr ru">⇐</div>',
-  '<div class="keys spec ardr ru">⇓</div>',
-  '<div class="keys spec arrr ru">⇒</div>',
-  '<div class="keys ctrl spec ru">Ctrl</div>',
+  '<div class="keys altr spec  ru">Alt</div>',
+  '<div arrow="⇐" class="keys spec arlr ar ru">⇐</div>',
+  '<div arrow="⇓" class="keys spec ardr ar ru">⇓</div>',
+  '<div arrow="⇒" class="keys spec arrr ar ru">⇒</div>',
+  '<div class="keys ctrl ctrr spec ru">Ctrl</div>',
   '<div numsy="~" num="`" class="keys eng">`</div>',
   '<div numsy="!" num="1" class="keys num eng">1</div>',
   '<div numsy="@" num="2" class="keys num eng">2</div>',
@@ -257,92 +126,23 @@ let keySymbols = [
   '<div symb="," class="keys eng">,</div>',
   '<div symb="." class="keys eng">.</div>',
   '<div symb="/" class="keys eng">/</div>',
-  '<div class="keys spec art eng">⇑</div>',
+  '<div arrow="⇑" class="keys spec art ar eng">⇑</div>',
   '<div class="keys shift big-keys right spec eng">Shift</div>',
   '<div class="keys ctrl left spec eng">Ctrl</div>',
-  '<div class="keys spec eng">Win</div>',
-  '<div class="keys spec eng">Alt</div>',
+  '<div class="keys win spec eng">Win</div>',
+  '<div class="keys altl spec eng">Alt</div>',
   '<div class="keys space eng"></div>',
-  '<div class="keys spec eng">Alt</div>',
-  '<div class="keys spec arl eng">⇐</div>',
-  '<div class="keys spec ard eng">⇓</div>',
-  '<div class="keys spec arr eng">⇒</div>',
-  '<div class="keys ctrl spec eng">Ctrl</div>',
+  '<div class="keys altr spec eng">Alt</div>',
+  '<div arrow="⇐" class="keys spec ar arl eng">⇐</div>',
+  '<div arrow="⇓" class="keys spec ar ard eng">⇓</div>',
+  '<div arrow="⇒" class="keys spec ar arr eng">⇒</div>',
+  '<div class="keys ctrl ctrr spec ar eng">Ctrl</div>',
 ]
 
 
 
 
 
-
-
-//     list  keys
-// let keySymbols = [
-//   '<div num="`" class="keys spec">`</div>',
-//   '<div num="1" class="keys">1</div>',
-//   '<div num="2" class="keys">2</div>',
-//   '<div num="3" class="keys">3</div>',
-//   '<div num="4" class="keys">4</div>',
-//   '<div num="5" class="keys">5</div>',
-//   '<div num="6" class="keys">6</div>',
-//   '<div num="7" class="keys">7</div>',
-//   '<div num="8" class="keys">8</div>',
-//   '<div num="9" class="keys">9</div>',
-//   '<div num="0" class="keys">0</div>',
-//   '<div num="-" class="keys">-</div>',
-//   '<div num="=" class="keys">=</div>',
-//   '<div class="keys backspace spec">Backspace</div>',
-//   '<div class="keys tab spec">Tab</div>',
-//   '<div data="q" datacaps="Q" class="keys">q</div>',
-//   '<div data="w" datacaps="W" class="keys">w</div>',
-//   '<div data="e" datacaps="E" class="keys">e</div>',
-//   '<div data="r" datacaps="R" class="keys">r</div>',
-//   '<div data="t" datacaps="T" class="keys">t</div>',
-//   '<div data="y" datacaps="Y" class="keys">y</div>',
-//   '<div data="u" datacaps="U" class="keys">u</div>',
-//   '<div data="i" datacaps="I" class="keys">i</div>',
-//   '<div data="o" datacaps="O" class="keys">o</div>',
-//   '<div data="p" datacaps="P" class="keys">p</div>',
-//   '<div symb="[" class="keys">[</div>',
-//   '<div symb="]" class="keys">]</div>',
-//   '<div symb="\\" class="keys">\\</div>',
-//   '<div class="keys spec">DEL</div>',
-//   '<div class="keys big-keys caps  spec">Caps Lock</div>',
-//   '<div data="a" datacaps="A" class="keys">a</div>',
-//   '<div data="s" datacaps="S" class="keys">s</div>',
-//   '<div data="d" datacaps="D" class="keys">d</div>',
-//   '<div data="f" datacaps="F" class="keys">f</div>',
-//   '<div data="g" datacaps="G" class="keys">g</div>',
-//   '<div data="h" datacaps="H" class="keys">h</div>',
-//   '<div data="j" datacaps="J" class="keys">j</div>',
-//   '<div data="k" datacaps="K" class="keys">k</div>',
-//   '<div data="l" datacaps="L" class="keys">l</div>',
-//   '<div symb=";" class="keys">;</div>',
-//   '<div symb="\'" class="keys">\'</div>',
-//   '<div class="keys enter spec">ENTER</div>',
-//   '<div class="keys shift big-keys spec">Shift</div>',
-//   '<div data="z" datacaps="Z" class="keys">z</div>',
-//   '<div data="x" datacaps="X" class="keys">x</div>',
-//   '<div data="c" datacaps="C" class="keys">c</div>',
-//   '<div data="v" datacaps="V" class="keys">v</div>',
-//   '<div data="b" datacaps="B" class="keys">b</div>',
-//   '<div data="n" datacaps="N" class="keys">n</div>',
-//   '<div data="m" datacaps="M" class="keys">m</div>',
-//   '<div symb="," class="keys">,</div>',
-//   '<div symb="." class="keys">.</div>',
-//   '<div symb="/" class="keys">/</div>',
-//   '<div class="keys spec">⇑</div>',
-//   '<div class="keys shift big-keys right spec">Shift</div>',
-//   '<div class="keys ctrl left spec">Ctrl</div>',
-//   '<div class="keys spec">Win</div>',
-//   '<div class="keys spec">Alt</div>',
-//   '<div class="keys space"></div>',
-//   '<div class="keys spec">Alt</div>',
-//   '<div class="keys spec">⇐</div>',
-//   '<div class="keys spec">⇓</div>',
-//   '<div class="keys spec">⇒</div>',
-//   '<div class="keys ctrl spec">Ctrl</div>',
-// ];
 //-------------
 let a = '';
 for(let i = 0; i < keySymbols.length; i++){
@@ -350,6 +150,7 @@ for(let i = 0; i < keySymbols.length; i++){
 }
 keyboard.innerHTML = a;
 document.body.append(keyboard);
+
 // --------------
 // language
 let exArr = document.querySelector('.keyboard').children
@@ -363,8 +164,6 @@ for(let i = 0; i < exArr.length; i++){
     exArr[i].classList.add('hidden');
   }
 }
-
-
 }else{
   for(let i = 0; i < exArr.length; i++){
     localStorage.setItem('lang','rus');
@@ -378,8 +177,6 @@ for(let i = 0; i < exArr.length; i++){
 }
 
 langStore = localStorage.getItem('lang');
-
-
 
 
 document.addEventListener('keydown', function(e) {
@@ -405,6 +202,8 @@ document.addEventListener('keydown', function(e) {
     
   }
  })
+
+
 
 let englKeys = {
 'Backquote': '`',
@@ -568,6 +367,8 @@ KeyF: 'а',
 
 
  document.addEventListener('keydown', function(e) {
+
+
 // space
   if(e.code == 'Space'){
     document.querySelectorAll('.space').forEach(a => a.classList.add('light'));
@@ -578,6 +379,7 @@ KeyF: 'а',
   }
   // Arrows
   if(e.code == 'ArrowUp'){
+    e.preventDefault();
     display.innerHTML += '⇑';
    document.querySelector('.art').classList.add('light');
    setTimeout(()=>{
@@ -588,6 +390,7 @@ KeyF: 'а',
     document.querySelector('.artr').classList.remove('light');
    },500)
   }else if(e.code == 'ArrowDown'){
+    e.preventDefault();
     display.innerHTML += '⇓';
     document.querySelector('.ard').classList.add('light');
     setTimeout(()=>{
@@ -598,6 +401,7 @@ KeyF: 'а',
      document.querySelector('.ardr').classList.remove('light');
     },500)
   }else if(e.code == 'ArrowRight'){
+    e.preventDefault();
     display.innerHTML += '⇒';
     document.querySelector('.arr').classList.add('light');
     setTimeout(()=>{
@@ -608,6 +412,7 @@ KeyF: 'а',
      document.querySelector('.arrr').classList.remove('light');
     },500)
   }else if(e.code == 'ArrowLeft'){
+    e.preventDefault();
     display.innerHTML += '⇐';
     document.querySelector('.arl').classList.add('light');
     setTimeout(()=>{
@@ -654,6 +459,27 @@ KeyF: 'а',
 
   // shift + key
    if(e.key == 'Shift'){
+    if(e.code == 'ShiftLeft'){
+    document.querySelectorAll('.lef').forEach((a) => {
+      console.log(a)
+      a.classList.add('light');
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.lef').forEach((a) => {
+        a.classList.remove('light');
+      })
+    },500)
+  }else if(e.code == 'ShiftRight'){
+    document.querySelectorAll('.right').forEach((a) => {
+      console.log(a)
+      a.classList.add('light');
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.right').forEach((a) => {
+        a.classList.remove('light');
+      })
+    },500)
+  }
     if(!document.querySelector('.caps').classList.contains('up')){
     let arrr = document.querySelectorAll('.keys');
      for(let i = 0; i < arrr.length; i++){
@@ -767,7 +593,7 @@ KeyF: 'а',
     && e.code != 'ArrowLeft' && e.code != 'ArrowDown'
     && e.code != 'ArrowRight' && e.code != 'ShiftRight'){
       let push = e.code;
-// enter keys
+// input keys
       if(langStore == 'engl'){
       if(englKeys[push] != undefined){
         
@@ -880,26 +706,8 @@ capsE.addEventListener('click', function(){
 let keysArr = document.querySelector('.keyboard');
 
 
-// shift
 
-// keysArr.addEventListener('mousedown', function(e) {
-//   if(e.target.classList.contains('shift')){
-//     let arr = document.querySelectorAll('.keys');
-//     for(let i = 0; i < arr.length; i++){
-//       if(arr[i].hasAttribute('data')){
-//         arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
-//       }
-//     }
-//     keysArr.addEventListener('mouseup', function(e) {
-//       let arr = document.querySelectorAll('.keys');
-//       for(let i = 0; i < arr.length; i++){
-//         if(arr[i].hasAttribute('data')){
-//           arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
-//         }
-//       }
-//     })
-//   }
-// })
+
 
 //enter characters on display
 keysArr.addEventListener('mousedown', function(e) {
@@ -909,6 +717,8 @@ keysArr.addEventListener('mousedown', function(e) {
     for(let i = 0; i < arr.length; i++){
       if(arr[i].hasAttribute('data')){
         arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('datacaps')}</div>`
+      }else if(arr[i].hasAttribute('num')){
+        arr[i].innerHTML = `<div numsy="${arr[i].getAttribute('numsy')}"  num="${arr[i].getAttribute('num')}" class="keys num ru">${arr[i].getAttribute('numsy')}</div>`
       }
     }
     keysArr.addEventListener('mouseup', function() {
@@ -916,9 +726,15 @@ keysArr.addEventListener('mousedown', function(e) {
       for(let i = 0; i < arr.length; i++){
         if(arr[i].hasAttribute('data')){
           arr[i].innerHTML = `<div data="${arr[i].getAttribute('data')}" datacaps="${arr[i].getAttribute('datacaps')}" class="keys">${arr[i].getAttribute('data')}</div>`
+        }else if(arr[i].hasAttribute('num')){
+          arr[i].innerHTML = `<div numsy="${arr[i].getAttribute('numsy')}"  num="${arr[i].getAttribute('num')}" class="keys num ru">${arr[i].getAttribute('num')}</div>`
         }
       }
     })
+  }else if(e.target.classList.contains('ar')){
+      display.innerHTML += e.target.getAttribute('arrow');
+  }else if(e.target.classList.contains('space')){
+    display.innerHTML += ' ';
   }
 
 // --
@@ -965,16 +781,54 @@ keysArr.addEventListener('mousedown', function(e) {
 
 //--------------
 document.onkeydown = function(e) {
+
   //  e.preventDefault();
   if(e.key == 'Alt' || e.key == 'AltGraph'){
     console.log(5555);
     e.preventDefault();
+    if(e.code == 'AltLeft'){
+      document.querySelectorAll('.altl').forEach((a) => {
+        console.log(a)
+        a.classList.add('light');
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('.altl').forEach((a) => {
+          a.classList.remove('light');
+        })
+      },500)
+    }else if(e.code == 'AltRight'){
+      document.querySelectorAll('.altr').forEach((a) => {
+        console.log(a)
+        a.classList.add('light');
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('.altr').forEach((a) => {
+          a.classList.remove('light');
+        })
+      },500)
+    }
   }else if(e.key == 'Tab'){
     e.preventDefault();
     display.innerHTML += '    ';
+    document.querySelectorAll('.tab').forEach((a) => {
+      a.classList.add('light');
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.tab').forEach((a) => {
+        a.classList.remove('light');
+      })
+    },500)
   }else if(e.key == 'Enter'){
     e.preventDefault();
     display.innerHTML += '\n';
+    document.querySelectorAll('.enter').forEach((a) => {
+      a.classList.add('light');
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.enter').forEach((a) => {
+        a.classList.remove('light');
+      })
+    },500)
   }else if(e.code == 'F11' || e.code == 'F12' || e.code == 'F10' ||
     e.code == 'F9' || e.code == 'F8' || e.code == 'F7' || e.code == 'F6' ||
     e.code == 'F5' || e.code == 'F4' || e.code == 'F3' || e.code == 'F2' || e.code == 'F1'
@@ -982,5 +836,43 @@ document.onkeydown = function(e) {
     e.preventDefault();
     let ss = display.innerHTML;
     display.innerHTML = ss.slice(0, ss.length - e.code.length);
+  }else if(e.key == 'Control'){
+    if(e.code == 'ControlLeft'){
+      document.querySelectorAll('.left').forEach((a) => {
+        console.log(a)
+        a.classList.add('light');
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('.left').forEach((a) => {
+          a.classList.remove('light');
+        })
+      },500)
+    }else if(e.code == 'ControlRight'){
+      document.querySelectorAll('.ctrr').forEach((a) => {
+        console.log(a)
+        a.classList.add('light');
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('.ctrr').forEach((a) => {
+          a.classList.remove('light');
+        })
+      },500)
+    }
+  }else if(e.key == 'Meta'){
+    document.querySelectorAll('.win').forEach((a) => {
+      a.classList.add('light');
+    });
+    setTimeout(()=>{
+      document.querySelectorAll('.win').forEach((a) => {
+        a.classList.remove('light');
+      })
+    },500)
   }
 }
+
+
+
+let text = document.createElement('p');
+text.classList.add('text')
+text.innerHTML = 'Клавиатура создана в операционной системе Windows. \n Для переключения языка комбинация: любые ctrl + shift'
+document.body.append(text);
